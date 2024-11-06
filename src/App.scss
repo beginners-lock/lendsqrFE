@@ -1,0 +1,64 @@
+@font-face {
+  font-family:AvenirRegular;
+  src: url('fonts/AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+  font-family:AvenirBold;
+  src: url('fonts/AvenirNextLTPro-Bold.otf');
+}
+
+@font-face {
+  font-family:WorkSansRegular;
+  src: url('fonts/WorkSans-Regular.ttf');
+}
+
+$font-regular:AvenirRegular;
+$font-bold:AvenirBold;
+$font-wsregular:WorkSansRegular;
+
+$darkblue:#213F7D;
+$oceanblue: #39CDCC;
+$grey: #545F7D;
+$bordergrey: #545F7D26;
+
+
+
+html, body, #root{
+  width:100vw; height:100vh; box-sizing:border-box;
+  margin:0; padding:0;
+  overflow:hidden;
+}
+
+@mixin fullscreen(){
+  width:100%; height:100%;
+}
+
+@mixin flexcolstart(){
+  display:flex; flex-direction:column; align-items:start;
+  justify-content:start;
+}
+
+@mixin flexrowstart(){
+  display:flex; flex-direction:row; align-items:start;
+  justify-content:start;
+}
+
+@mixin flexrowcenter(){
+  display:flex; flex-direction:row; align-items:center;
+  justify-content:center;
+}
+
+@mixin flexrowcenterstart(){
+  display:flex; flex-direction:row; align-items:center;
+  justify-content:start;
+}
+
+@mixin flexrowcenterbetween(){
+  display:flex; flex-direction:row; align-items:center;
+  justify-content:space-between;
+}
+
+#App{
+  @include fullscreen();
+}

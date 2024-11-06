@@ -1,0 +1,86 @@
+@use './../App.scss';
+
+#SigninPage{
+    @include App.fullscreen;
+    @include App.flexrowcenterbetween;
+    background-color:#545F7D05;
+}
+
+#SigninLeft{
+    width:100%; height:100%; position:relative;
+    @include App.flexrowcenter;
+
+    #CompanyName{
+        position:absolute; top:106px; left:97px;
+        width:174px; height:36px;
+    }
+}
+
+#SigninRight{
+    border:2px App.$bordergrey solid;
+    min-width:704px; max-width:704px; height:100%; background-color:white;
+    @include App.flexrowcenter; box-sizing:border-box;
+}
+
+#SigninForm{
+    @include App.flexcolstart; width:447px;
+
+    h1{
+        font-family:App.$font-bold;
+        color:App.$darkblue; font-size:40px;
+        margin:0; height:54.64px;
+    }
+
+    h4{
+        font-family:App.$font-regular;
+        color:App.$grey; font-weight:400; font-size:20px;
+        margin:0; margin-bottom:60px; height:27.32px;
+    }
+
+    .SigninInputDiv{
+        @include App.flexrowcenterbetween;
+        width:100%; height:50px; border-radius:5px; border: 2px App.$bordergrey solid;
+        margin-bottom:24px; padding:16px; box-sizing:border-box;
+
+        &:has(input:active, input:focus){
+            border:2px black solid;
+        }
+    }
+
+    .SigninFormEmail, .SigninFormPassword{
+        border:none; width:100%; background-color:transparent; color:App.$grey;
+        font-family:App.$font-regular; font-size:14px; line-height:19px; font-weight:400px;
+        
+        &:active, &:focus{
+            outline:none;
+        }
+
+        &::-ms-reveal, &::-ms-clear{
+            display: none;
+        }
+    }
+
+    span{
+        font-size:12px; font-weight:600; font-family:App.$font-regular;
+        color:App.$oceanblue; letter-spacing:2px; line-height:16.4px;
+
+        &:hover{
+            cursor:pointer;
+        }
+    }
+
+    a{
+        @extend span;
+        margin-bottom:30px;
+
+        &:hover{
+            cursor:pointer;
+        }
+    }
+
+    #SigninSubmitBtn{
+        @extend span;
+        width:100%; height:48px; border-radius:8px; border:none;
+        background-color:App.$oceanblue; color:white;
+    }
+}

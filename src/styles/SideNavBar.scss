@@ -1,0 +1,68 @@
+@use './../App.scss';
+
+#SideNavBar{
+    background-color:white;
+    min-width:283px; max-width:283px; height:50%; z-index:10; box-sizing:border-box;
+    @include App.flexcolstart;
+}
+
+#SideNavScroller{
+    padding-top:40px; width:100%; height:100%; overflow-y:auto; overflow-x:hidden; padding-bottom:40px;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius:10px;
+        background: #f1f1f1;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #888; border-radius:20px; cursor:pointer;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+.SwitchOrg{
+    @include App.flexrowcenterstart;
+    width:100%; padding-left:30px; box-sizing:border-box;
+    font-family:App.$font-wsregular; font-weight:400;
+    font-size:16px; line-height:18.77px; color:App.$darkblue; margin-bottom:42px;
+
+    &:hover{ cursor:pointer; }
+
+    .SwitchOrgImg{
+        margin-right:10px; width:16px;
+    }
+
+    .SwitchOrgDropdown{
+        margin-left:8px; width:14px; height:14px;
+    }
+}
+
+.SideNavOption{
+    @include App.flexrowcenterstart;
+    @extend .SwitchOrg;
+    min-height:40px; max-height:40px; margin-bottom:10px;
+
+    .SideNavImg{
+        margin-right:10px; width:16px;
+    }
+
+    .SideNavDropdown{
+        display:none;
+    }
+}
+
+.ActiveSideNav{
+    background:#39cdcc1a; border-left:3px App.$oceanblue solid;
+}
+
+.SideNavHeader{
+    font-family:App.$font-wsregular; font-weight:500; font-size:12px; line-height:14px;
+    color:App.$grey; width:100%; padding-left:30px; margin-top:20px; margin-bottom:10px;
+}

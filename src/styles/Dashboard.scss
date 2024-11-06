@@ -1,0 +1,16 @@
+@use './../App.scss';
+
+#DashboardPage{
+    @include App.fullscreen;
+    @include App.flexcolstart;
+    background-color:#545F7D0D; box-sizing:border-box;
+}
+
+#DashboardBottom{
+    @include App.flexrowstart; width:100%;
+    box-sizing:border-box; flex-grow:1;
+}
+
+#DashboardBody{
+    width:100%; height:100%; overflow-y:auto;
+}

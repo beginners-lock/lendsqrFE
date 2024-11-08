@@ -1,0 +1,40 @@
+@use './../App.scss';
+
+#FilterModal{
+    position:absolute;
+    width:270px; height:600px; background-color:white;
+    @include App.flexcolstart; border-radius:4px; padding:30px 20px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    box-sizing:border-box; top:60px;
+
+    label{
+        font-family:App.$font-wsregular; font-weight:500; line-height:16.42px;
+        font-size:14px; color:App.$grey; margin-bottom:6px;
+    }
+
+    .FilterInput{
+        width:230px; height:40px; border: 1px solid #213F7D; border-radius:8px;
+        padding:20px 12px; box-sizing:border-box; margin-bottom:20px; font-family:App.$font-wsregular;
+        font-weight:400; font-size:14px; line-height:16.42px; color:App.$grey;
+    }
+
+    .FilterSelect{
+        @extend .FilterInput;
+        padding:10px;
+    }
+
+    span{
+        @include App.flexrowcenterstart
+    }
+
+    #ResetBtn{
+        border-radius:8px; width:98px; height:40px; font-family:App.$font-wsregular; font-size:14px;
+        @include App.flexrowcenter; border:1px solid App.$grey; background-color:white;
+        font-weight:600; line-height:16.42px; color:App.$grey; margin-right:14px; cursor:pointer;
+    }
+
+    #FilterBtn{
+        @extend #ResetBtn;
+        background-color:App.$oceanblue; color:white; border:none;
+    }
+}

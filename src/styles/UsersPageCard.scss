@@ -1,0 +1,20 @@
+@use './../App.scss';
+
+.UsersPageCard{
+    width:240px; height:160px;
+    @include App.flexcolstart;
+    padding:20px 0px 0px 30px; border-radius:4px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+
+    img{
+        width:40px; height:40px; border-radius:50%;
+    }
+
+    h4{
+        color:App.$grey; font-size:14px; line-height:16.42px; font-family:App.$font-wsregular; font-weight:500;
+    }
+
+    span{
+        color:App.$darkblue; font-size:24px; line-height:28.15px; font-family:App.$font-wsregular; font-weight:600;
+    }
+}

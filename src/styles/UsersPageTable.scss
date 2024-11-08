@@ -1,0 +1,63 @@
+@use './../App.scss';
+
+#TableContainer{
+    position:relative;
+    @include App.flexcolstart; background-color:white; padding:20px; border-radius:4px; 
+    width:100%; margin-top:20px; box-sizing:border-box;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+table{
+    border-collapse:collapse;
+    width:100%; background-color:white; box-sizing:border-box;
+
+    tbody tr td{
+        padding:20px 0px; font-weight:400; font-size:14px; line-height:16.42px;
+        font-family:App.$font-wsregular; color:#545F7D;
+    }
+
+    thead tr, tbody tr{ 
+        .moretd{
+            min-width:20px; max-width:20px; box-sizing:border-box;
+            text-align:center; cursor:pointer;
+
+            span{
+                @include App.flexrowcenter; width:100%;
+            }
+        }
+
+        .statustd{
+            min-width:100px; max-width:100px; box-sizing:border-box;
+        }
+
+        .orgtd, .usertd{
+            min-width:115px; max-width:115px; box-sizing:border-box;
+        }
+
+        .phonetd{
+            min-width:125px; max-width:125px; box-sizing:border-box;
+        }
+
+        .emailtd, .datetd{
+            min-width:155px; max-width:155px; box-sizing:border-box;
+        }
+    }
+
+    thead tr th{
+        align-items:center;
+        text-align:left; font-family:App.$font-wsregular; font-weight:600;
+        font-size:12px; line-height:14.08px; color:App.$grey;
+
+        span{
+            @include App.flexrowcenterstart;
+        }
+
+        img{
+            width:16px; height:16px; margin-left:10px; cursor:pointer;
+        }
+    }
+}
+
+.tablestatus{
+    padding:6px 18px; border-radius:100px;
+}

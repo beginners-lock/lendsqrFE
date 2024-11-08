@@ -13,9 +13,15 @@
   src: url('fonts/WorkSans-Regular.ttf');
 }
 
+@font-face {
+  font-family:WorkSansBold;
+  src: url('fonts/WorkSans-Bold.ttf');
+}
+
 $font-regular:AvenirRegular;
 $font-bold:AvenirBold;
 $font-wsregular:WorkSansRegular;
+$font-wsbold:WorkSansBold;
 
 $darkblue:#213F7D;
 $oceanblue: #39CDCC;
@@ -37,6 +43,16 @@ html, body, #root{
 @mixin flexcolstart(){
   display:flex; flex-direction:column; align-items:start;
   justify-content:start;
+}
+
+@mixin flexcolstartcenter(){
+  display:flex; flex-direction:column; align-items:start;
+  justify-content:center;
+}
+
+@mixin flexcolstartend(){
+  display:flex; flex-direction:column; align-items:start;
+  justify-content:end;
 }
 
 @mixin flexrowstart(){

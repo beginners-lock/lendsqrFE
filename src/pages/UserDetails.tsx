@@ -1,4 +1,5 @@
 
+import { useNavigate } from 'react-router-dom';
 import { StarSystem } from '../components/StarSystem';
 import { UserDetailsGrid } from '../components/UserDetailsGrid';
 import './../styles/UserDetails.scss';
@@ -7,6 +8,8 @@ import { useState } from 'react';
 type Navs = 'General Details' | 'Documents' | 'Bank Details' | 'Loans' | 'Savings' | 'App and System';
 
 export const UserDetails = () => {
+	const navigate = useNavigate();
+	
 	const [activenav, setActivenav] = useState<Navs>('General Details');
 
 	const personalinformation = [
@@ -32,7 +35,7 @@ export const UserDetails = () => {
 
 	return (
 		<div id="UsersDetailsPage">
-			<span id="UDBackBtn">
+			<span id="UDBackBtn" onClick={()=>{ navigate('/dashboard/users') }}>
 				<img alt="back" src="/back.png"/>
 				Back to Users
 			</span>

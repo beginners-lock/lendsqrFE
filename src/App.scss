@@ -18,6 +18,8 @@
   src: url('fonts/WorkSans-Bold.ttf');
 }
 
+$mobile: 1000px;
+
 $font-regular:AvenirRegular;
 $font-bold:AvenirBold;
 $font-wsregular:WorkSansRegular;
@@ -53,6 +55,11 @@ html, body, #root{
 @mixin flexcolstartend(){
   display:flex; flex-direction:column; align-items:start;
   justify-content:end;
+}
+
+@mixin flexcolcenter(){
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center;
 }
 
 @mixin flexrowstart(){

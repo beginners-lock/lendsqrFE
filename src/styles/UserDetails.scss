@@ -7,7 +7,7 @@
 }
 
 #UDBackBtn{
-    @include App.flexrowcenterstart; line-height:16.42px;
+    @include App.flexrowcenterstart; line-height:16.42px; cursor:pointer;
     font-family:App.$font-wsregular; color:App.$darkblue; font-size:16px; font-weight:400;
 
     img{

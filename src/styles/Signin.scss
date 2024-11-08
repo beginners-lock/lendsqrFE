@@ -7,18 +7,34 @@
 }
 
 #SigninLeft{
-    width:100%; height:100%; position:relative;
-    @include App.flexrowcenter;
+    @media screen and (max-width: App.$mobile) {
+        display:none;
+    }
 
-    #CompanyName{
-        position:absolute; top:106px; left:97px;
-        width:174px; height:36px;
+    width:50%; height:100%; position:relative;
+    @include App.flexcolcenter;
+
+    div{
+        width:100%; height:auto;
+        position:absolute; top:106px; padding:0px 20px; box-sizing:border-box;
+
+        #CompanyName{
+            width:174px; height:36px;
+        }
+    }
+
+    img{
+        min-width:300px; max-width:600px;
     }
 }
 
 #SigninRight{
+    @media screen and (max-width: App.$mobile) {
+        width:100%; max-width:100%;
+    }
+
     border:2px App.$bordergrey solid;
-    min-width:704px; max-width:704px; height:100%; background-color:white;
+    width:50%; max-width:704px; height:100%; background-color:white;
     @include App.flexrowcenter; box-sizing:border-box;
 }
 

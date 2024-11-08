@@ -11,7 +11,9 @@ export const Signin = () => {
 	return (
 		<div id="SigninPage">
 			<div id="SigninLeft">
-				<img alt="companyName" id="CompanyName" src="companyname.svg"/>
+				<div>
+					<img alt="companyName" id="CompanyName" src="companyname.svg"/>
+				</div>
 				<img alt="signinImg" id="SigninImg" src="signinimg.png"/>
 			</div>
 			<div id="SigninRight">

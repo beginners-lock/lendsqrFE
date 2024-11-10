@@ -235,10 +235,14 @@
             }
 
             .cellvalue{
-                font-weight:500; font-size:16px; line-height:18.77px;
+                font-weight:500; font-size:16px; line-height:18.77px; cursor:pointer;
 
                 @media screen and (max-width: 1200px) {
                     font-size:12px; line-height:15px;
+                }
+
+                @media screen and (max-width: App.$mobile) {
+                    font-size:10px; line-height:11px;
                 }
             }
         }

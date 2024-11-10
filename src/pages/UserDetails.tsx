@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { StarSystem } from '../components/StarSystem';
 import { UserDetailsGrid } from '../components/UserDetailsGrid';
 import './../styles/UserDetails.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { USERS } from '../utils/routes';
+import { DataType } from '../utils/types';
+import { getMonthlyRange } from '../utils/functions';
 
 type Navs = 'General Details' | 'Documents' | 'Bank Details' | 'Loans' | 'Savings' | 'App and System';
 
@@ -12,27 +14,43 @@ export const UserDetails = () => {
 	const navigate = useNavigate();
 	
 	const [activenav, setActivenav] = useState<Navs>('General Details');
+	const [userdetails, setUserdetails] = useState<DataType|null>(null);
 
-	const personalinformation = [
-		{ header:'FULL NAME', value: 'Grace Effiom' }, { header:'PHONE NUMBER', value: '07060780922' }, { header:'EMAIL ADDRESS', value: 'grace@gmail.com' },
-		{ header:'BVN', value: '07060780922' }, { header:'GENDER', value: 'Female' }, { header:'MARITAL STATUS', value: 'Single' }, 
-		{ header:'CHILDREN', value: 'None' }, { header:'TYPE OF RESIDENCE', value: "Parent's Apartment" }
-	];
+	const personalinformation = userdetails ? [
+		{ header:'FULL NAME', value: userdetails.fullname }, { header:'PHONE NUMBER', value: userdetails.phone }, 
+		{ header:'EMAIL ADDRESS', value: userdetails.email }, { header:'BVN', value: userdetails.bvn.toString() }, 
+		{ header:'GENDER', value: userdetails.gender }, { header:'MARITAL STATUS', value: userdetails.maritalstatus }, 
+		{ header:'CHILDREN', value: userdetails.children }, { header:'TYPE OF RESIDENCE', value: userdetails.residence }
+	] : null;
 
-	const education = [
-		{ header:'LEVEL OF EDUCATION', value: 'B Sc.' }, { header:'EMPLOYMENT STATUS', value: 'Employed' }, { header:'SECTOR OF EMPLOYMENT', value: 'FinTech' },
-		{ header:'DURATION OF EMPLOYMENT', value: '2 years' }, { header:'OFFICIAL EMAIL', value: 'grace@lendsqr.com' }, { header:'MONTHLY INCOME', value: '₦200,000.00- ₦400,000.00' }, 
-		{ header:'LOAN REPAYMENT', value: '40,000' }
-	]
+	const education = userdetails ? [
+		{ header:'LEVEL OF EDUCATION', value: userdetails.education }, { header:'EMPLOYMENT STATUS', value: userdetails.employmentstatus }, 
+		{ header:'SECTOR OF EMPLOYMENT', value: userdetails.employmentstatus==='Employed' ? userdetails.sector : '' }, 
+		{ header:'DURATION OF EMPLOYMENT', value: userdetails.employmentstatus==='Employed' ? userdetails.duration+' years' : '' }, 
+		{ header:'OFFICIAL EMAIL', value: userdetails.fullname.split(' ')[0].toLowerCase()+'@lendsqr.com' }, 
+		{ header:'MONTHLY INCOME', value: getMonthlyRange(userdetails.monthlyincome) }, 
+		{ header:'LOAN REPAYMENT', value: '₦'+userdetails.loanrepayment }
+	] : null;
 
-	const socials = [
-		{ header:'TWITTER', value: '@grace_effiom' }, { header:'FACEBOOK', value: 'Grace Effiom' }, { header:'INSTAGRAM', value: '@grace_effiom' }
-	];
+	const socials = userdetails ? [
+		{ header:'TWITTER', value: '@'+userdetails.fullname.split(' ').join('_').toLowerCase() }, { header:'FACEBOOK', value: userdetails.fullname }, 
+		{ header:'INSTAGRAM', value: '@'+userdetails.fullname.split(' ').join('_').toLowerCase() }
+	] : null;
 
-	const guarantor = [
-		{ header:'FULL NAME', value: 'Debby Ogana' }, { header:'PHONE NUMBER', value: '07060780922' }, { header:'EMAIL ADDRESS', value: 'debby@gmail.com' }, 
-		{ header:'RELATIONSHIP', value: 'Sister' }
-	]
+	const guarantor = userdetails ? [
+		{ header:'FULL NAME', value: userdetails.guarantor.name }, { header:'PHONE NUMBER', value: userdetails.guarantor.phone }, 
+		{ header:'EMAIL ADDRESS', value: userdetails.guarantor.email }, { header:'RELATIONSHIP', value: userdetails.guarantor.relationship }
+	] : null
+
+	useEffect(()=>{
+		const storage = localStorage.getItem('LendsqrUserDetails');
+
+		if(storage){
+			setUserdetails(JSON.parse(storage));
+		}else{
+			//navigate(USERS);
+		}
+	}, []);
 
 	return (
 		<div id="UsersDetailsPage">
@@ -57,20 +75,20 @@ export const UserDetails = () => {
 					<img alt="defaultuser" src="/defaultavatar.png"/>
 
 					<div className='DetailSection'>
-						<span id="UDName">Grace Effion</span>
-						<span id="UDId">LSQFf587g90</span>
+						<span id="UDName">{userdetails && userdetails.fullname}</span>
+						<span id="UDId">{userdetails && userdetails.id}</span>
 					</div>
 					
 					<div id="DetailSectionCenter" className='DetailSection'>
 						<span id="UDTier">User's Tier</span>
 						<StarSystem
-							numberOfStars={1}
+							numberOfStars={userdetails ? userdetails.stars : 0}
 						/>
 					</div>
 
 					<div className='DetailSection'>
-						<span id="UDAmount">₦200,000.00</span>
-						<span id="UDBank">9912345678/Providus Bank</span>
+						<span id="UDAmount">{userdetails && '₦'+userdetails.bankamount}</span>
+						<span id="UDBank">{userdetails && userdetails.banknumber+'/'+userdetails.bankname+' Bank'}</span>
 					</div>
 				</div>
 
@@ -87,28 +105,28 @@ export const UserDetails = () => {
 			<div id="UserDetailsBodyBottom">
 				<p className='Header'>Personal Information</p>
 				<UserDetailsGrid
-					data={personalinformation}
+					data={personalinformation ? personalinformation : []}
 					showBottomBorder={true}
 					columns={'fiveColumn'}
 				/>
 
 				<p className='Header'>Education and Employment</p>
 				<UserDetailsGrid
-					data={education}
+					data={education ? education : []}
 					showBottomBorder={true}
 					columns={'fourColumn'}
 				/>
 
 				<p className='Header'>Socials</p>
 				<UserDetailsGrid
-					data={socials}
+					data={socials ? socials : []}
 					showBottomBorder={true}
 					columns={'fiveColumn'}
 				/>
 
 				<p className='Header'>Guarantor</p>
 				<UserDetailsGrid
-					data={guarantor}
+					data={guarantor ? guarantor : []}
 					showBottomBorder={false}
 					columns={'fiveColumn'}
 				/>

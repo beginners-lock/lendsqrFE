@@ -9,14 +9,15 @@ type Props = {
 	right: number
 	activateuser: ()=>void
 	blacklistuser: ()=>void
+	saveuserdetails: ()=>void
 }
 
-export const OptionsModal = ({ show, closemodal, top, right, activateuser, blacklistuser }: Props) => {
+export const OptionsModal = ({ show, closemodal, top, right, activateuser, blacklistuser, saveuserdetails }: Props) => {
 	const navigate = useNavigate();
 
 	return (
 		<div id="OptionsModal" style={{display:show?'flex':'none', top: top, right: right}} onClick={(e)=>{ e.stopPropagation(); }}>
-			<span onClick={()=>{ navigate(USERSDETAILS); closemodal(); }}>
+			<span onClick={()=>{ saveuserdetails(); navigate(USERSDETAILS); closemodal(); }}>
 				<img alt="modalview" src="/modalview.png"/>
 				View Details
 			</span>

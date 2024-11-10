@@ -4,17 +4,7 @@ import { Status, StatusTypes } from './Status';
 import { OptionsModal } from './OptionsModal';
 import { FilterModal } from './FilterModal';
 import { PagePicker } from './PagePicker';
-
-type DataType = {
-    id: number
-    organization: string
-    username: string
-    email: string
-    phone: string
-    date: string
-    status: 'Inactive'|'Active'|'Pending'|'Blacklisted'
-}
-
+import { DataType } from '../utils/types';
 
 export const UsersPageTable = () => {
     const [data, setData] = useState<DataType[]>([]);
@@ -149,6 +139,12 @@ export const UsersPageTable = () => {
         }
     }
 
+    const saveuserdetails = () => {
+        if(activeIndex){
+            localStorage.setItem('LendsqrUserDetails', JSON.stringify(data[activeIndex]));
+        }
+    }
+
     return (
         <div id="UsersPageBottomBody">
             <div id="TableContainer" onClick={()=>{ closeModals(); }}>
@@ -196,14 +192,14 @@ export const UsersPageTable = () => {
                         filteredData.length>0?
                             filteredData.slice( startingindex() , lastindex() ).map((data, index)=>{
                                 return(
-                                    <tr key={index} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
+                                    <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
-                                        <td>{data.username}</td>
+                                        <td>{data.fullname.split(' ')[0].toLowerCase()}</td>
                                         <td>{data.email}</td>
                                         <td>{data.phone}</td>
                                         <td>{formatDate(data.date.toString())}</td>
                                         <td><Status status={data.status}/></td>
-                                        <td className='moretd' onClick={(e)=>{ e.stopPropagation(); toggleOptions(e, data.id); }}><span><img alt="more" src="/more.png"/></span></td>
+                                        <td className='moretd' onClick={(e)=>{ e.stopPropagation(); toggleOptions(e, data.index); }}><span><img alt="more" src="/more.png"/></span></td>
                                     </tr>
                                 )
                             })
@@ -219,14 +215,14 @@ export const UsersPageTable = () => {
                     :   data.length>0?
                             data.slice( startingindex() , lastindex() ).map((data, index)=>{
                                 return(
-                                    <tr key={index} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
+                                    <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
-                                        <td>{data.username}</td>
+                                        <td>{data.fullname.split(' ')[0].toLowerCase()}</td>
                                         <td>{data.email}</td>
                                         <td>{data.phone}</td>
                                         <td>{formatDate(data.date.toString())}</td>
                                         <td><Status status={data.status}/></td>
-                                        <td className='moretd' onClick={(e)=>{ e.stopPropagation(); toggleOptions(e, data.id); }}><span><img alt="more" src="/more.png"/></span></td>
+                                        <td className='moretd' onClick={(e)=>{ e.stopPropagation(); toggleOptions(e, data.index); }}><span><img alt="more" src="/more.png"/></span></td>
                                     </tr>
                                 )
                             })
@@ -255,6 +251,7 @@ export const UsersPageTable = () => {
                 top={coords.y} right={coords.x}
                 activateuser={activateuser}
                 blacklistuser={blacklistuser}
+                saveuserdetails={saveuserdetails}
             />
             </div>
 

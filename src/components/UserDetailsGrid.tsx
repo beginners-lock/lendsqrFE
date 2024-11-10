@@ -1,3 +1,4 @@
+import { stringcutter } from '../utils/functions';
 import './../styles/UserDetails.scss';
 
 type Props = {
@@ -14,7 +15,7 @@ export const UserDetailsGrid = ({ data, showBottomBorder, columns }: Props) => {
                     return(
                         <div>
                             <span className='cellheader'>{data.header}</span>
-                            <span className='cellvalue'>{data.value}</span>
+                            <span className='cellvalue' title={data.value}>{stringcutter(data.value, 23)}</span>
                         </div>
                     )
                 })

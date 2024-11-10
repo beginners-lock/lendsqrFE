@@ -7,9 +7,22 @@
     box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.1);
 
     @include App.flexrowcenterbetween;
-
+    
     @media screen and (max-width: App.$mobile) {
         height:20px; padding:30px 15px;
+    }
+
+    #MenuBurger{
+        display:none;
+
+        @media screen and (max-width: App.$tab) {
+            display:flex;
+            width:32px;
+        }
+
+        @media screen and (max-width: App.$mobile) {
+            width:20px;
+        }
     }
 
     #CompanyName{
@@ -60,9 +73,13 @@
     #searchmobile{
         display:none;
 
-        @media screen and (max-width: 550px) {
-            display:flex;
-            width:20px; height:20px;
+        @media screen and (max-width: App.$tab) {
+            display:flex; margin-right:17px;
+            width:32px; height:32px;
+        }
+
+        @media screen and (max-width: App.$mobile) {
+            width:20px; height:20px; margin-right:0px;
         }
     }
 
@@ -95,7 +112,7 @@
     width:400px; height:40px; border-radius:8px; overflow:hidden;
     @include App.flexrowcenterbetween; box-sizing:border-box;
 
-    @media screen and (max-width: 550px) {
+    @media screen and (max-width: App.$tab) {
         display:none;
     }
 
@@ -128,15 +145,19 @@
     z-index:20; height:50px; transition-duration:0.25s;
     width:100%; @include App.flexrowcenter; display:none;
     
-    @media screen and (max-width: App.$mobile) {
+    @media screen and (max-width: App.$tab) {
         display:flex;
     }
 
     div{
         @extend #TNBSearch; display:none; 
     
+        @media screen and (max-width: App.$tab) {
+            display:flex; width:400px; height:40px; margin:0px;
+        }
+
         @media screen and (max-width: App.$mobile) {
-            display:flex; width:300px; margin:0px;
+            width:300px; height:40px;
         }
 
         input{
@@ -146,7 +167,13 @@
   }
 
   .activesearchmodal{
-    top:60px; 
+    @media screen and (max-width: App.$tab) {
+        top:110px; 
+    }
+
+    @media screen and (max-width: App.$mobile) {
+        top:60px; 
+    }
   }
 
   .inactivesearchmodal{

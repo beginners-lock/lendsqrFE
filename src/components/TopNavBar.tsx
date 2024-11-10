@@ -8,7 +8,9 @@ export const TopNavBar = () => {
 
     return (
         <nav id="TopNavBar">
-            <img alt="companyName" id="CompanyName" src="/companyname.svg" onClick={()=>{ updateActiveModal('sidebar') }}/>
+            <img alt="menuburger" id="MenuBurger" src="/menu.png" onClick={()=>{ updateActiveModal('sidebar') }}/>
+
+            <img alt="companyName" id="CompanyName" src="/companyname.svg"/>
 
             <div id="TNBSearch">
                 <input type="search" placeholder='Search for anything'/>

@@ -1,11 +1,33 @@
+import { useNavigate } from 'react-router-dom';
+import { SignedUserContext } from '../App';
 import './../styles/Signin.scss';
-import { useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import { USERS } from '../utils/routes';
 
 export const Signin = () => {
+	const { updateEmail } = useContext(SignedUserContext);
+
+	const navigate = useNavigate();
+
+	const emailRef = useRef<HTMLInputElement|null>(null);
 	const [hide, setHide] = useState(true);
+	const [showerror, setShowerror] = useState(false);
 
 	const toggleHide = () => {
 		setHide(prevstate => !prevstate);
+	}
+
+	const signin = () => {
+		setShowerror(false);
+		const email = emailRef.current!.value.trim();
+
+		if(email!=='' && email.length>12 && email.includes('@')){
+			updateEmail(email);
+			localStorage.setItem('LendsqrUser', email);
+			navigate(USERS)
+		}else{
+			setShowerror(true);
+		}
 	}
 
 	return (
@@ -22,8 +44,9 @@ export const Signin = () => {
 					<h4>Enter details to login</h4>
 
 					<div className='SigninInputDiv'>
-						<input className='SigninFormEmail' placeholder='Email' type="email"/>
+						<input ref={emailRef} className='SigninFormEmail' placeholder='Email' type="email" required/>
 					</div>
+					<span className='inputerror' style={{display:showerror?'flex':'none'}}>Invalid Email</span>
 
 					<div className='SigninInputDiv'>
 						<input className='SigninFormPassword' placeholder='Password' type={hide?"password":"text"}/>
@@ -31,7 +54,7 @@ export const Signin = () => {
 					</div>
 
 					<a>FORGOT PASSWORD</a>
-					<input id="SigninSubmitBtn" type="submit" value="LOG IN"/>
+					<input id="SigninSubmitBtn" type="submit" value="LOG IN" onClick={(e)=>{ e.preventDefault(); signin(); }}/>
 				</form>
 			</div>
 		</div>

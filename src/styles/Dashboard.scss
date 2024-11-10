@@ -2,7 +2,7 @@
 
 #DashboardPage{
     @include App.fullscreen;
-    @include App.flexcolstart;
+    @include App.flexcolstart; position:relative;
     background-color:#545F7D0D; box-sizing:border-box; overflow:hidden;
 }
 
@@ -12,6 +12,54 @@
 }
 
 #DashboardBody{
-    @include App.flexcolstart; border:1px red solid;
+    @include App.flexcolstart;
     box-sizing:border-box; width:100%; height:100%; overflow-y:auto; overflow-x:hidden;
+}
+
+#AccountModal{
+    position:absolute; @include App.flexcolstart; z-index:20; background-color:white; transition-duration:0.25s;
+    top:110px; height:auto; width:150px; padding:25px 15px 5px 15px; border-radius:4px; color:App.$darkblue;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    
+    @media screen and (max-width: App.$mobile) {
+        top:65px;
+    }
+
+    #accountModalName, #accountModalNotification{
+        display:none;
+        
+        @media screen and (max-width: App.$tab) {
+            display:flex;
+        }
+    }
+
+    a{
+        text-decoration:none; font-family:"Roboto"; display:none; cursor:pointer;
+        text-decoration-line:underline; margin-bottom:20px;
+        
+        @media screen and (max-width: App.$tab) {
+            display:flex;
+        }
+    }
+
+    span{
+        font-family:App.$font-wsregular; margin-bottom:20px;
+        @include App.flexrowcenterstart; cursor:pointer;
+
+        img{
+            width:20px; margin-right:5px;
+        }
+    }
+}
+
+.activeaccountmodal{
+    right:20px;
+
+    @media screen and (max-width: App.$mobile) {
+        right:10px;
+    }
+}
+
+.inactiveaccountmodal{
+    right:-200px;
 }

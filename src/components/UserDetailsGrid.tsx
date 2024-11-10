@@ -3,12 +3,12 @@ import './../styles/UserDetails.scss';
 type Props = {
     data: { header: string, value: string}[]
     showBottomBorder: boolean
-    columns: number
+    columns: 'threeColumn'|'fourColumn'|'fiveColumn'
 }
 
 export const UserDetailsGrid = ({ data, showBottomBorder, columns }: Props) => {
     return (
-        <div className='grid' style={{borderBottom:showBottomBorder?'1px solid #213F7D':'none', gridTemplateColumns:`repeat(${columns}, 1fr)`}}>
+        <div className={`grid ${columns}`} style={{borderBottom:showBottomBorder?'1px solid #213F7D':'none'}}>
             {
                 data.map((data)=>{
                     return(

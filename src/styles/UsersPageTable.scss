@@ -1,9 +1,13 @@
 @use './../App.scss';
 
+#UsersPageBottomBody{
+    width:100%; 
+}
+
 #TableContainer{
     position:relative;
     @include App.flexcolstart; background-color:white; padding:20px; border-radius:4px; 
-    width:100%; margin-top:20px; box-sizing:border-box;
+    width:100%; margin-top:20px; box-sizing:border-box; overflow-y:hidden; overflow-x:auto;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -14,6 +18,10 @@ table{
     tbody tr td{
         padding:20px 0px; font-weight:400; font-size:14px; line-height:16.42px;
         font-family:App.$font-wsregular; color:#545F7D;
+
+        @media screen and (max-width: 1100px) {
+            font-size:12px;
+        }
     }
 
     thead tr, tbody tr{ 
@@ -34,6 +42,12 @@ table{
             min-width:115px; max-width:115px; box-sizing:border-box;
         }
 
+        .usertd{
+            @media screen and (max-width: 1100px) {
+                min-width:105px; max-width:105px;
+            }
+        }
+
         .phonetd{
             min-width:125px; max-width:125px; box-sizing:border-box;
         }
@@ -48,12 +62,92 @@ table{
         text-align:left; font-family:App.$font-wsregular; font-weight:600;
         font-size:12px; line-height:14.08px; color:App.$grey;
 
+        @media screen and (max-width: 1100px) {
+            font-size:10px;
+        }
+
         span{
             @include App.flexrowcenterstart;
         }
 
         img{
             width:16px; height:16px; margin-left:10px; cursor:pointer;
+        }
+    }
+}
+
+#UsersPageTableBottom{
+    width:100%; @include App.flexrowcenterbetween; margin-top:20px;
+
+    #TablePageSelectDiv{
+        color:App.$grey; font-family:App.$font-wsregular; width:auto;
+        font-size: 14px; font-weight: 400; line-height: 16.42px;
+
+        @media screen and (max-width: 650px) {
+            width:85px; font-size:12px;
+        }
+
+        @media screen and (max-width: App.$mobile) {
+            width:70px;
+        }
+
+        select{
+            margin:0px 10px; width: 80px; height: 30px; border:none; font-family:App.$font-wsregular;
+            border-radius:4px; color:App.$darkblue; background: #213F7D1A; cursor:pointer;
+            font-size: 14px; font-weight: 500; line-height: 16.42px; padding-left:10px;
+
+            &:active, &:focus{ outline:none; }
+
+            @media screen and (max-width: 650px) {
+                margin:10px 0px;
+            }
+
+            @media screen and (max-width: App.$mobile) {
+                width:60px; font-size:12px;
+            }
+        }
+
+        span{
+            margin-left:5px;
+        }
+    }
+
+    #PagePicker{
+        @include App.flexrowcenter;
+
+        .PagePickerPageDiv, .PagePickerDots{
+            font-family: App.$font-wsregular; font-size: 16px; font-weight: 400;
+            line-height: 18.77px; margin:0px 10px;
+
+            @media screen and (max-width: App.$mobile) {
+                font-size: 12px; line-height:16px; margin:0px 6px;
+            }
+        }
+
+        .activepage{
+            color: #545F7D; cursor:pointer;
+        }
+
+        .inactivepage{
+            color: #545F7D99; cursor:pointer;
+
+        }
+
+        .PageArrow{
+            width:24px; height:24px; border-radius:4px; background-color:#213F7D1A;   
+            @include App.flexrowcenter; cursor:pointer; margin:0px 10px;
+
+            @media screen and (max-width: App.$mobile) {
+                width:18px; height:18px; margin:0px 6px;
+            }
+
+            img{
+                width:14px; height:14px;
+
+                @media screen and (max-width: App.$mobile) {
+                    width:10px; height:10px;
+                }
+            }
         }
     }
 }

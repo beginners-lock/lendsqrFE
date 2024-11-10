@@ -1,13 +1,25 @@
 @use './../App.scss';
 
 #UsersDetailsPage{
-    @include App.flexcolstart;
+    @include App.flexcolcenterstart;
     width:100%; height:auto; box-sizing:border-box;
     padding:30px;
+
+    @media screen and (max-width: App.$mobile) {
+        padding:10px; 
+    }
+}
+
+#UDBackBtnDiv{
+    width:1037px; @include App.flexrowstart;
+
+    @media screen and (max-width: 1400px) {
+        width:100%;
+    }
 }
 
 #UDBackBtn{
-    @include App.flexrowcenterstart; line-height:16.42px; cursor:pointer;
+    @include App.flexrowcenterstart; line-height:16.42px; cursor:pointer; width:auto;
     font-family:App.$font-wsregular; color:App.$darkblue; font-size:16px; font-weight:400;
 
     img{
@@ -17,12 +29,27 @@
 
 #UserDetailsHeader{
     @include App.flexrowcenterbetween;
-    width:100%; 
+    flex-wrap:wrap; width:1037px;
+
+    @media screen and (max-width: 1400px) {
+        width:100%;
+    }
 
     span{
+        width:auto;
+
+        @media screen and (max-width: App.$mobile) {
+            width:100%; @include App.flexrowcenterbetween;
+        }
+
         button{
             border-radius:8px; width:170px; height:40px; cursor:pointer;
             font-family:App.$font-wsregular; font-weight:600; font-size:14px; line-height:16.42px;
+
+            @media screen and (max-width: App.$mobile) {
+                border-radius:8px; width:170px; height:40px; cursor:pointer;
+                font-family:App.$font-wsregular; font-weight:600; font-size:12px; line-height:16.42px;
+            }
         }    
 
         #blacklistuser{
@@ -37,19 +64,41 @@
 
 #UserDetailsBodyTop{
     margin-top:40px; background-color:white; border-radius:4px;
-    width:1037px; height:210px; padding:30px 30px 0px 30px;
+    width:1037px; height:210px; padding:30px 30px 0px 30px; box-sizing:border-box;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     @include App.flexcolstartend;
 
+    @media screen and (max-width: 1400px) {
+        width:100%;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding:20px 10px 0px 10px; height:auto;
+    }
+
     #Details{
         @include App.flexrowcenterstart; box-sizing:border-box;
+
+        @media screen and (max-width: 600px) {
+            @include App.flexrowcenter; flex-wrap:wrap;
+        }
         
         img{
             width:100px;
+
+            @media screen and (max-width: App.$mobile) {
+               width:80px;
+            }
         }
 
-        .DetailSectionCenter{
+        #DetailSectionCenter{
             border-left:1px solid #545F7D; border-right:1px solid #545F7D; padding:10px 30px;
+
+            
+            @media screen and (max-width: 600px) {
+                @include App.flexcolcenter; border:none;
+                max-width:100%; min-width:100%; box-sizing:border-box; padding:10px 20px 10px 0px;
+            }
         }
 
         .DetailSection{
@@ -57,26 +106,50 @@
 
             #UDName{
                 font-size:22px; font-weight:500; font-family:App.$font-wsregular; line-height:25.81px; color:App.$darkblue;
+
+                @media screen and (max-width: App.$mobile) {
+                    font-size:18px; width:100%;
+                }
             }
 
             #UDId{
                 font-size:14px; font-weight:400; line-height:16.42px; color:App.$darkblue; font-family:App.$font-wsregular; margin-top:10px;
+                
+                @media screen and (max-width: App.$mobile) {
+                    font-size:10px;
+                }
             }
 
             #UDTier{
                 font-family:App.$font-wsregular; font-size:14px; font-weight:500; line-height:16.42px; color:#545F7D; margin-bottom:10px;
+                
+                @media screen and (max-width: App.$mobile) {
+                    text-align:center; width:100%;
+                }
             }
 
             #UDAmount{
                 font-size:22px; font-weight:500; line-height:25.81px; color:App.$darkblue; font-family:App.$font-wsregular; margin-bottom:12px;
+
+                @media screen and (max-width: 600px) {
+                    font-size:18px; margin-top:20px; text-align:center; width:100%;
+                }
             }
 
             #UDBank{
                 font-size:12px; font-weight:400; line-height:14.08px; color:App.$darkblue; font-family:App.$font-wsregular;
+
+                @media screen and (max-width: 600px) {
+                    width:100px; text-align:center; width:100%;
+                }
             }
 
             #StarSystem{
                 @include App.flexrowcenterstart;
+
+                @media screen and (max-width: App.$mobile) {
+                    @include App.flexrowcenter; width:100%;
+                }
             
                 img{
                     margin-right:5px; width:14px;
@@ -89,9 +162,21 @@
         width:100%; margin-top:51px;
         @include App.flexrowcenterbetween;
 
+        @media screen and (max-width: App.$mobile) {
+            flex-wrap:wrap;
+        }        
+
         a{
-            text-align:center; cursor:pointer; font-family:App.$font-wsregular;
+            text-align:center; cursor:pointer; font-family:App.$font-wsregular; box-sizing:border-box;
             padding-bottom:10px; width:170px; font-size:16px; font-weight:400; line-height:18.77px;
+
+            @media screen and (max-width: 1200px) {
+                width:170px; font-size:12px;
+            }
+
+            @media screen and (max-width:650px) {
+                width:120px; font-size:10px; padding-top:10px;
+            }
         }
 
         .activenav{
@@ -105,13 +190,25 @@
 }
 
 #UserDetailsBodyBottom{
-    margin-top:40px; background-color:white; border-radius:4px;
+    margin-top:40px; background-color:white; border-radius:4px; box-sizing:border-box;
     width:1037px; height:auto; padding:30px 30px 0px 30px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     @include App.flexcolstart; font-family:App.$font-wsregular; 
 
+    @media screen and (max-width: 1400px) {
+        width:100%;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding:20px 10px 0px 10px; height:auto;
+    }
+
     .Header{
         font-size: 16px; font-weight: 500; line-height: 18.77px; color:App.$darkblue;
+
+        @media screen and (max-width:650px) {
+            font-size:12px;
+        }
     }
 
     .grid{
@@ -119,15 +216,63 @@
         gap:30px 0px; margin-bottom:30px;
 
         div{
-            @include App.flexcolstartcenter; height:43px; color:App.$grey;
+            @include App.flexcolstart; height:43px; color:App.$grey;
+
+            @media screen and (max-width: 600px) {
+                height:30px;
+            }
 
             .cellheader{
                 font-size:12px; font-weight:400; line-height:14.08px; margin-bottom:8px;
+
+                @media screen and (max-width: App.$tab) {
+                    font-size:11px; line-height:10px;
+                }
+
+                @media screen and (max-width: 600px) {
+                    font-size:8px; line-height:10px;
+                }
             }
 
             .cellvalue{
                 font-weight:500; font-size:16px; line-height:18.77px;
+
+                @media screen and (max-width: 1200px) {
+                    font-size:12px; line-height:15px;
+                }
             }
+        }
+    }
+
+    .threeColumn{
+        grid-template-columns: repeat(3, 1fr);
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .fourColumn{
+        grid-template-columns: repeat(4, 1fr);
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    
+        @media screen and (max-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .fiveColumn{
+        grid-template-columns: repeat(5, 1fr);
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    
+        @media screen and (max-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }

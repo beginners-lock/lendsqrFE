@@ -4,6 +4,7 @@ import { StarSystem } from '../components/StarSystem';
 import { UserDetailsGrid } from '../components/UserDetailsGrid';
 import './../styles/UserDetails.scss';
 import { useState } from 'react';
+import { USERS } from '../utils/routes';
 
 type Navs = 'General Details' | 'Documents' | 'Bank Details' | 'Loans' | 'Savings' | 'App and System';
 
@@ -35,10 +36,12 @@ export const UserDetails = () => {
 
 	return (
 		<div id="UsersDetailsPage">
-			<span id="UDBackBtn" onClick={()=>{ navigate('/dashboard/users') }}>
-				<img alt="back" src="/back.png"/>
-				Back to Users
-			</span>
+			<div id="UDBackBtnDiv">
+				<span id="UDBackBtn" onClick={()=>{ navigate(USERS) }}>
+					<img alt="back" src="/back.png"/>
+					Back to Users
+				</span>
+			</div>
 
 			<div id="UserDetailsHeader">
 				<h3 id="UsersHeader">User Details</h3>
@@ -57,8 +60,8 @@ export const UserDetails = () => {
 						<span id="UDName">Grace Effion</span>
 						<span id="UDId">LSQFf587g90</span>
 					</div>
-
-					<div className='DetailSection DetailSectionCenter'>
+					
+					<div id="DetailSectionCenter" className='DetailSection'>
 						<span id="UDTier">User's Tier</span>
 						<StarSystem
 							numberOfStars={1}
@@ -86,28 +89,28 @@ export const UserDetails = () => {
 				<UserDetailsGrid
 					data={personalinformation}
 					showBottomBorder={true}
-					columns={5}
+					columns={'fiveColumn'}
 				/>
 
 				<p className='Header'>Education and Employment</p>
 				<UserDetailsGrid
 					data={education}
 					showBottomBorder={true}
-					columns={4}
+					columns={'fourColumn'}
 				/>
 
 				<p className='Header'>Socials</p>
 				<UserDetailsGrid
 					data={socials}
 					showBottomBorder={true}
-					columns={5}
+					columns={'fiveColumn'}
 				/>
 
 				<p className='Header'>Guarantor</p>
 				<UserDetailsGrid
 					data={guarantor}
 					showBottomBorder={false}
-					columns={5}
+					columns={'fiveColumn'}
 				/>
 			</div>
 		</div>

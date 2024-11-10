@@ -1,7 +1,9 @@
 import './../styles/UsersPageTable.scss';
 
+export type StatusTypes = 'Inactive'|'Active'|'Pending'|'Blacklisted';
+
 type Props = {
-    status: 'Inactive'|'Active'|'Pending'|'Blacklisted'
+    status: StatusTypes
 }
 
 export const Status = ({ status }: Props) => {

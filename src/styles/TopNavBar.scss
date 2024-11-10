@@ -3,40 +3,20 @@
 #TopNavBar{
     top:0px; left:0px;
     width:100%; height:100px; background-color:white;
-    padding:30px; box-sizing:border-box; z-index:20;
+    padding:30px; box-sizing:border-box; z-index:30;
     box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.1);
 
     @include App.flexrowcenterbetween;
 
-    #CompanyName{
-        width:145px; height:30px;
+    @media screen and (max-width: App.$mobile) {
+        height:20px; padding:30px 15px;
     }
 
-    #TNBSearch{
-        width:400px; height:40px; border-radius:8px; overflow:hidden;
-        @include App.flexrowcenterbetween; box-sizing:border-box;
+    #CompanyName{
+        height:30px; margin-right:20px;
 
-        input{
-            width:344px; height:100%; border-radius:8px 0px 0px 8px; font-family:App.$font-wsregular;
-            padding:0px 10px 0px 20px; border-width:2px 0px 2px 2px; border-color:App.$bordergrey;
-            font-size:14px; font-weight:400; line-height:16.4px;
-
-            &:active, &:focus{
-                outline:none;
-            }
-
-            &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration {
-                display: none;
-            }
-        }
-
-        span{
-            @include App.flexrowcenter; box-sizing:border-box;
-            background-color:App.$oceanblue; width:56px; height:40px;
-
-            img{
-                width:14px; height:14px;
-            }
+        @media screen and (max-width: App.$mobile) {
+            height:20px;
         }
     }
 
@@ -47,23 +27,128 @@
     a{
         text-decoration:none; font-family:"Roboto"; color:App.$darkblue;
         text-decoration-line:underline; font-size:16px; line-height:18.75px; font-weight:400;
+
+        @media screen and (max-width: App.$tab) {
+            display:none;
+        }
     }
 
     #TNBNotification{
         width:26px; height:26px; margin-left:47px;
+
+        @media screen and (max-width: App.$tab) {
+            display:none;
+        }
     }
 
     #TNBAccount{
-        @include App.flexrowcenterstart;
-        font-size:16px; font-weight:600; line-height:18.8px; 
+        @include App.flexrowcenterend; cursor:pointer;
+        font-size:16px; font-weight:600; line-height:18.8px; width:180px;
         color:App.$darkblue; font-family:App.$font-wsregular; margin-left:30px;
+
+        @media screen and (max-width: App.$tab) {
+            width:50px;
+        }
+
+        span{
+            @media screen and (max-width: App.$tab) {
+                display:none;
+            }
+        }
+    }
+
+    #searchmobile{
+        display:none;
+
+        @media screen and (max-width: 550px) {
+            display:flex;
+            width:20px; height:20px;
+        }
     }
 
     #TNBAvatar{
-        width:48px; height:48px; border-radius:50%; margin-right:10px;
+        width:48px; height:48px; border-radius:50%; margin-right:3px;
+
+        @media screen and (max-width: App.$tab) {
+            margin-right:0px;
+        }
+
+        @media screen and (max-width: App.$mobile) {
+            width:28px; height:28px;
+        }
     }
 
     #TNBDropdown{
-        width:20px; height:20px; margin-left:5px;
+        width:20px; height:20px; margin-left:3px;
+        
+        @media screen and (max-width: App.$tab) {
+            margin-left:0px;
+        }
+
+        @media screen and (max-width: App.$mobile) {
+            width:18px; height:18px;
+        }
     }
 }
+
+#TNBSearch{
+    width:400px; height:40px; border-radius:8px; overflow:hidden;
+    @include App.flexrowcenterbetween; box-sizing:border-box;
+
+    @media screen and (max-width: 550px) {
+        display:none;
+    }
+
+    input{
+        width:344px; height:100%; border-radius:8px 0px 0px 8px; font-family:App.$font-wsregular;
+        padding:0px 10px 0px 20px; border-width:2px 0px 2px 2px; border-color:App.$bordergrey;
+        font-size:14px; font-weight:400; line-height:16.4px;
+
+        &:active, &:focus{
+            outline:none;
+        }
+
+        &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration {
+            display: none;
+        }
+    }
+
+    span{
+        @include App.flexrowcenter; box-sizing:border-box;
+        background-color:App.$oceanblue; width:56px; height:40px;
+
+        img{
+            width:14px; height:14px;
+        }
+    }
+}
+
+#SearchModal{
+    position:absolute;
+    z-index:20; height:50px; transition-duration:0.25s;
+    width:100%; @include App.flexrowcenter; display:none;
+    
+    @media screen and (max-width: App.$mobile) {
+        display:flex;
+    }
+
+    div{
+        @extend #TNBSearch; display:none; 
+    
+        @media screen and (max-width: App.$mobile) {
+            display:flex; width:300px; margin:0px;
+        }
+
+        input{
+            width:100%;
+        }
+    }
+  }
+
+  .activesearchmodal{
+    top:60px; 
+  }
+
+  .inactivesearchmodal{
+    top:0px;
+  }

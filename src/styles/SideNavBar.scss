@@ -1,9 +1,25 @@
 @use './../App.scss';
 
 #SideNavBar{
-    background-color:white;
+    background-color:white; position:relative;
     min-width:283px; max-width:283px; height:100%; z-index:10; box-sizing:border-box;
-    @include App.flexcolstart; overflow:hidden;
+    @include App.flexcolstart; overflow:hidden; transition-duration:0.3s;
+
+    @media screen and (max-width: App.$tab) {
+        position:absolute;
+    }
+}
+
+.activesidemodal{
+    @media screen and (max-width: App.$tab) {
+        left:0;
+    }
+}
+
+.inactivesidemodal{
+    @media screen and (max-width: App.$tab) {    
+        left:-300px;
+    }
 }
 
 #SideNavScroller{

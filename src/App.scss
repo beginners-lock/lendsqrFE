@@ -18,7 +18,8 @@
   src: url('fonts/WorkSans-Bold.ttf');
 }
 
-$mobile: 1000px;
+$mobile: 550px;
+$tab: 1000px;
 
 $font-regular:AvenirRegular;
 $font-bold:AvenirBold;
@@ -30,7 +31,17 @@ $oceanblue: #39CDCC;
 $grey: #545F7D;
 $bordergrey: #545F7D26;
 
+#docker{
+  position:absolute; top:115px; display:none;
 
+  @media screen and (max-width: $tab) {
+      display:flex; width:30px; 
+  }
+
+  @media screen and (max-width: $mobile) {
+    width:20px; 
+  }
+}
 
 html, body, #root{
   width:100vw; height:100vh; box-sizing:border-box;
@@ -50,6 +61,11 @@ html, body, #root{
 @mixin flexcolstartcenter(){
   display:flex; flex-direction:column; align-items:start;
   justify-content:center;
+}
+
+@mixin flexcolcenterstart(){
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:start;
 }
 
 @mixin flexcolstartend(){
@@ -75,6 +91,11 @@ html, body, #root{
 @mixin flexrowcenterstart(){
   display:flex; flex-direction:row; align-items:center;
   justify-content:start;
+}
+
+@mixin flexrowcenterend{
+  display:flex; flex-direction:row; align-items:center;
+  justify-content:end;
 }
 
 @mixin flexrowcenterbetween(){

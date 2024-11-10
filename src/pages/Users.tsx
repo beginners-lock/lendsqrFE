@@ -30,7 +30,9 @@ export const Users = () => {
 				/>
 			</section>
 
-			<UsersPageTable/>
+			<UsersPageTable
+			
+			/>
 		</div>
 	);
 }

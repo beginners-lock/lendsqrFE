@@ -7,19 +7,19 @@
 }
 
 #SigninLeft{
-    @media screen and (max-width: App.$mobile) {
-        display:none;
-    }
-
     width:50%; height:100%; position:relative;
     @include App.flexcolcenter;
+
+    @media screen and (max-width: App.$tab) {
+        display:none;
+    }
 
     div{
         width:100%; height:auto;
         position:absolute; top:106px; padding:0px 20px; box-sizing:border-box;
 
         #CompanyName{
-            width:174px; height:36px;
+            height:36px;
         }
     }
 
@@ -29,37 +29,66 @@
 }
 
 #SigninRight{
-    @media screen and (max-width: App.$mobile) {
-        width:100%; max-width:100%;
-    }
-
     border:2px App.$bordergrey solid;
     width:50%; max-width:704px; height:100%; background-color:white;
     @include App.flexrowcenter; box-sizing:border-box;
+
+    @media screen and (max-width: App.$tab) {
+        display:flex; flex-direction:column; justify-content:flex-start;
+        width:100%; max-width:100%; padding-top:150px;
+    }
+
+    @media screen and (max-width: App.$mobile) {
+        padding-top:50px;
+    }
 }
 
 #SigninForm{
-    @include App.flexcolstart; width:447px;
+    @include App.flexcolstart; width:447px; box-sizing:border-box;
+
+    @media screen and (max-width: App.$mobile) {
+        width:100%; padding:20px;
+    }
 
     h1{
         font-family:App.$font-bold;
         color:App.$darkblue; font-size:40px;
         margin:0; height:54.64px;
+
+        @media screen and (max-width: App.$mobile) {
+            font-size:28px; height:auto; margin-bottom:5px;
+        }
     }
 
     h4{
         font-family:App.$font-regular;
         color:App.$grey; font-weight:400; font-size:20px;
-        margin:0; margin-bottom:60px; height:27.32px;
+        margin:0; margin-bottom:36px; height:27.32px;
+
+        @media screen and (max-width: App.$mobile) {
+            font-size:14px; margin-bottom:20px;
+        }
     }
 
     .SigninInputDiv{
         @include App.flexrowcenterbetween;
         width:100%; height:50px; border-radius:5px; border: 2px App.$bordergrey solid;
-        margin-bottom:24px; padding:16px; box-sizing:border-box;
+        margin-top:24px; padding:16px; box-sizing:border-box;
+
+        @media screen and (max-width: App.$mobile) {
+            height:40px; padding:10px;
+        }
 
         &:has(input:active, input:focus){
             border:2px black solid;
+        }
+    }
+
+    .inputerror{
+        color:red; font-size:12px; margin-top:5px; margin-left:2px; font-family:App.$font-regular; letter-spacing:normal;
+
+        @media screen and (max-width: App.$mobile) {
+            font-size:10px; margin-top:2px;
         }
     }
 
@@ -67,6 +96,10 @@
         border:none; width:100%; background-color:transparent; color:App.$grey;
         font-family:App.$font-regular; font-size:14px; line-height:19px; font-weight:400px;
         
+        @media screen and (max-width: App.$mobile) {
+            font-size:12px;
+        }
+
         &:active, &:focus{
             outline:none;
         }
@@ -80,6 +113,10 @@
         font-size:12px; font-weight:600; font-family:App.$font-regular;
         color:App.$oceanblue; letter-spacing:2px; line-height:16.4px;
 
+        @media screen and (max-width: App.$mobile) {
+            font-size:10px;
+        }
+
         &:hover{
             cursor:pointer;
         }
@@ -87,6 +124,7 @@
 
     a{
         @extend span;
+        margin-top:24px;
         margin-bottom:30px;
 
         &:hover{
@@ -98,5 +136,9 @@
         @extend span;
         width:100%; height:48px; border-radius:8px; border:none;
         background-color:App.$oceanblue; color:white;
+
+        @media screen and (max-width: App.$mobile) {
+            height:40px;
+        }
     }
 }

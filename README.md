@@ -7,7 +7,7 @@ Link to Live Preview
 
 Using React and Sass to replicate a [Figma Design](https://www.figma.com/design/ZKILoCoIoy1IESdBpq3GNC/Lendsqr-Frontend-Engineering-Assessment?node-id=5530-0&node-type=canvas&t=qSXbJG0rT5GTTXwM-0) as part of the requirements of a frontend engineering assessment by Lendsqr.
 
-## How to install Install and Run the Project
+## How to Install and Run the Project
 
 - First of all ensure that you have [nodejs](https://nodejs.org/en) installed on your system. You can check this by running `node -v` on your terminal or command prompt. If you don't get any errors you're fine.
 - Now pull this project to any folder of your choice using the necessary git commands and run `npm install` to install all the necessary dependencies.

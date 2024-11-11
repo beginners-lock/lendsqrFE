@@ -24,6 +24,9 @@ export type DataType = {
     monthlyincome:number,
     duration: string,
     education: "B Sc."|"B A."|"PhD"|"M Sc."|"M A.",
+
+    withloans: boolean,
+    withsavingss: boolean,
     
     guarantor: {
       name: string,

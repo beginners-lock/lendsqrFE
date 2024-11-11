@@ -7,7 +7,11 @@ import { PagePicker } from './PagePicker';
 import { DataType } from '../utils/types';
 import { StatusTypes } from '../utils/types';
 
-export const UsersPageTable = () => {
+type Props = {
+    updateCardData: (arg: DataType[])=>void
+}
+
+export const UsersPageTable = ({ updateCardData }: Props) => {
     const [data, setData] = useState<DataType[]>([]);
     const [showfilter, setShowfilter] = useState(false);
     const [showoptions, setShowoptions] = useState(false);
@@ -26,6 +30,7 @@ export const UsersPageTable = () => {
             return response.json();
         }).then((json)=>{
             setData(json);
+            updateCardData(json);
             const el = document.getElementById('TablePageSelectTag') as HTMLSelectElement;
             if(el){
                 el.value = "10";
@@ -114,6 +119,7 @@ export const UsersPageTable = () => {
             const copy = [...data];
             copy[activeIndex].status = 'Active';
             setData(copy);
+            updateCardData(copy);
 
             //If a filter is set update it as well
             if(currentfilter){
@@ -130,6 +136,7 @@ export const UsersPageTable = () => {
             const copy = [...data];
             copy[activeIndex].status = 'Blacklisted';
             setData(copy);
+            updateCardData(copy);
 
             //If a filter is set update it as well
             if(currentfilter){
@@ -195,7 +202,7 @@ export const UsersPageTable = () => {
                                 return(
                                     <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
-                                        <td>{data.fullname.split(' ')[0].toLowerCase()}</td>
+                                        <td>{data.fullname}</td>
                                         <td>{data.email}</td>
                                         <td>{data.phone}</td>
                                         <td>{formatDate(data.date.toString())}</td>
@@ -218,7 +225,7 @@ export const UsersPageTable = () => {
                                 return(
                                     <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
-                                        <td>{data.fullname.split(' ')[0].toLowerCase()}</td>
+                                        <td>{data.fullname}</td>
                                         <td>{data.email}</td>
                                         <td>{data.phone}</td>
                                         <td>{formatDate(data.date.toString())}</td>

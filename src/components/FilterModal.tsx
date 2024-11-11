@@ -41,16 +41,16 @@ export const FilterModal = ({ show, closemodal, setfilter, reset }: Props) => {
             </select>
 
             <label>Username</label>
-            <input className='FilterInput' placeholder='Username'/>
+            <input className='FilterInput' placeholder='Username' type='text'/>
 
             <label>Email</label>
-            <input className='FilterInput' placeholder='Email'/>
+            <input className='FilterInput' placeholder='Email' type="email"/>
 
             <label>Date</label>
-            <input className='FilterInput' placeholder='Date'/>
+            <input className='FilterInput' placeholder='Date' type='date'/>
 
             <label>Phone Number</label>
-            <input className='FilterInput' placeholder='Phone Number'/>
+            <input className='FilterInput' placeholder='Phone Number' type="phone"/>
 
             <label>Status</label>
             <select ref={statusSelectRef} className='FilterSelect' defaultValue={''}>

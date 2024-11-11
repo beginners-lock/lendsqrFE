@@ -15,7 +15,7 @@ Using React and Sass to replicate a [Figma Design](https://www.figma.com/design/
 
 ## File Structure
 
-From the project root we have two folders `public` and `/src`.
+From the project root we have two folders `/public` and `/src`.
 
 - The `/public` folder contains all images used and has a '/json' folder which contains the json file with the 500 mock user records used for this project.
 - The '/src' folder, further contains 5 folders:
@@ -26,9 +26,67 @@ From the project root we have two folders `public` and `/src`.
     - `functions.ts` - This file contains all global functions used within the project so that it may be accessed by any component.
   - The `/styles` folder contains all the Sass files for the various pages and components in the project.
   - The `/fonts` folder contains all the external fonts used in this project.
-  - The `/pages` folder contains all the pages in this project which are 4 in number: `Signin`, `Users`, `UserDetails`, `Dashboard`
+  - The `/pages` folder contains all the pages in this project which are 4 in number:
+    - `Signin` viewable at `https:\\hostname\signin`
+    - `Users` viewable at `https:\\hostname\dashboard\users`
+    - `UserDetails` viewable at `https:\\hostname\dashboard\userdetails`
+    - `Dashboard`: This is basically the parent route for `Users` page and `UserDetails` page
   - The `/components` folder contains all the reusable components in the project
 
+
+## APIs and Libraries
+
+### JSON Generator
+
+The [JSON Generator](https://json-generator.com/) api was used to generate the 500 user records that are used as mock data for the table in the Users Page. To generate a similar set of mock records you can run this in the [website](https://json-generator.com/).
+
+```
+  [
+  '{{repeat(500, 500)}}',
+  {
+    index: '{{index()}}',
+    id: '{{objectId().toUpperCase()}}',
+    status: '{{random("Inactive", "Active", "Blacklisted", "Pending")}}',
+    fullname: '{{firstName()}} {{surname()}}',
+    stars: '{{integer(1, 3)}}',
+    gender: '{{gender()}}',
+    children: '{{random("None", "1", "2", "3", "4", "5")}}',
+    residence: '{{random("My Apartment", "Parent\'s Apartment")}}',
+    maritalstatus: '{{random("Single", "Married")}}',
+    organization: '{{company()}}',
+    email: '{{email()}}',
+    phone: '{{phone()}}',
+    date: '{{date(new Date(2014, 0, 1), new Date(), "MM-dd-YYYY hh:mm ")}}',
+    bvn: '{{integer(1000000000, 9999999999)}}',
+    
+    bankamount: '{{floating(100000, 1000000, 2, "₦0,0.00")}}',
+    banknumber:	'{{integer(1000000000, 9999999999)}}',
+    bankname: '{{company()}}',
+    
+    employmentstatus: '{{random("Unemployed", "Employed")}}',
+    sector: '{{random("Finance", "Telecommunication", "Healthcare", "Fashion", "Entertainment", "Construction", "Marketing",  "Aerospace", "Agriculture", "Marketing",  "Education", "Media & News", "Technology" )}}',
+    loanrepayment: '{{integer(10000, 100000, "₦0,0")}}',
+    monthlyincome:'{{integer(1, 10)}}',
+    duration: '{{random("2", "3", "4", "5", "6", "7")}}',
+    education: '{{random("B Sc.", "B A.", "PhD", "M Sc.", "M A.")}}',
+    
+    withloans: '{{bool()}}',
+    withsavingss: '{{bool()}}',
+    
+    guarantor: {
+      name: '{{firstName()}} {{surname()}}',
+      email: '{{email()}}',
+      phone: '{{phone()}}',
+      relationship: '{{random("Father", "Mother", "Brother", "Sister", "Friend")}}'
+      
+    }
+  }
+]
+```
+
+### React Countup
+
+This library is what provides the count up animation for the numbers on the cards in the `Users` page. For more information on this library, you can check out the [documentation](https://www.npmjs.com/package/react-countup)
 
 
 # React + TypeScript + Vite

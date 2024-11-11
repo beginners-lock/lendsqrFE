@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import './../styles/FilterModal.scss';
-import { StatusTypes } from './Status';
+import { StatusTypes } from '../utils/types';
 
 type Props = {
     show: boolean

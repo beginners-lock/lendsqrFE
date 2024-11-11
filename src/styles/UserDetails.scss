@@ -43,7 +43,7 @@
         }
 
         button{
-            border-radius:8px; width:170px; height:40px; cursor:pointer;
+            border-radius:8px; width:170px; height:40px; cursor:pointer; background-color:white;
             font-family:App.$font-wsregular; font-weight:600; font-size:14px; line-height:16.42px;
 
             @media screen and (max-width: App.$mobile) {

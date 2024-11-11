@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import './../styles/SideNavBar.scss';
 import { SideNavOption } from './SideNavOption';
-import { ActiveModalContext } from '../App';
+import { ActiveModalContext } from '../utils/contexts';
 
 export const SideNavBar = () => {
     const { activeModal } = useContext(ActiveModalContext);

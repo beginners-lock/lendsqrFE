@@ -12,9 +12,8 @@ export const Dashboard = () => {
 
 	useEffect(()=>{
 		const session = localStorage.getItem('LendsqrUser');
-		console.log(session);
+		
 		if(!session){
-			console.log('hey');;
 			navigate(SIGNIN);
 		}
 	}, []);

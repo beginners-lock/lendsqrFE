@@ -4,27 +4,10 @@ import { Signin } from './pages/Signin'
 import { Dashboard } from './pages/Dashboard'
 import { Users } from './pages/Users'
 import { UserDetails } from './pages/UserDetails'
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SIGNIN } from './utils/routes'
-
-type modalStates = 'search'|'account'|'sidebar'|null
-
-type activeModalType = {
-	activeModal: modalStates;
-	updateActiveModal: (modal: modalStates)=>void
-}
-
-type SignedUserType = {
-	email: string|null
-	updateEmail: (arg: string|null)=>void
-}
-
-/*type ActiveUser = {
-
-}*/
-
-export const ActiveModalContext = createContext<activeModalType>({ activeModal:null, updateActiveModal:()=>{} });
-export const SignedUserContext = createContext<SignedUserType>({ email:null, updateEmail:()=>{} });
+import { modalStates } from './utils/types'
+import { ActiveModalContext, SignedUserContext } from './utils/contexts'
 
 function App() {
 	const navigate = useNavigate();

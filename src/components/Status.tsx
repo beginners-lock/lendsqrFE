@@ -1,6 +1,5 @@
+import { StatusTypes } from '../utils/types';
 import './../styles/UsersPageTable.scss';
-
-export type StatusTypes = 'Inactive'|'Active'|'Pending'|'Blacklisted';
 
 type Props = {
     status: StatusTypes

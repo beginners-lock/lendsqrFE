@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import './../styles/TopNavBar.scss';
-import { ActiveModalContext } from '../App';
+import { ActiveModalContext } from '../utils/contexts';
 
 export const SearchModal = () => {
     const { activeModal } = useContext(ActiveModalContext);

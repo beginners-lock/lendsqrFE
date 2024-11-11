@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import './../styles/Dashboard.scss';
-import { ActiveModalContext, SignedUserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { SIGNIN } from '../utils/routes';
+import { ActiveModalContext, SignedUserContext } from '../utils/contexts';
 
 export const AccountModal = () => {
     const { activeModal } = useContext(ActiveModalContext);

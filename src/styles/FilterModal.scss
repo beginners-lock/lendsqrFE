@@ -13,13 +13,13 @@
     }
 
     .FilterInput{
-        width:230px; height:40px; border: 1px solid #213F7D; border-radius:8px;
+        width:230px; height:40px; border: 1px solid #213F7D; border-radius:8px; background-color:white;
         padding:20px 12px; box-sizing:border-box; margin-bottom:20px; font-family:App.$font-wsregular;
         font-weight:400; font-size:14px; line-height:16.42px; color:App.$grey;
     }
 
     .FilterSelect{
-        @extend .FilterInput;
+        @extend .FilterInput; background-color:white;
         padding:10px 0px 10px 10px;
     }
 

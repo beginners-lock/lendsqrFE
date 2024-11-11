@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './../styles/UsersPageTable.scss';
-import { Status, StatusTypes } from './Status';
+import { Status } from './Status';
 import { OptionsModal } from './OptionsModal';
 import { FilterModal } from './FilterModal';
 import { PagePicker } from './PagePicker';
 import { DataType } from '../utils/types';
+import { StatusTypes } from '../utils/types';
 
 export const UsersPageTable = () => {
     const [data, setData] = useState<DataType[]>([]);
@@ -140,7 +141,7 @@ export const UsersPageTable = () => {
     }
 
     const saveuserdetails = () => {
-        if(activeIndex){
+        if(activeIndex!==null){
             localStorage.setItem('LendsqrUserDetails', JSON.stringify(data[activeIndex]));
         }
     }

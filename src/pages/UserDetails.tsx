@@ -44,8 +44,9 @@ export const UserDetails = () => {
 
 	useEffect(()=>{
 		const storage = localStorage.getItem('LendsqrUserDetails');
-
+		console.log(storage);
 		if(storage){
+			console.log(storage);
 			setUserdetails(JSON.parse(storage));
 		}else{
 			//navigate(USERS);

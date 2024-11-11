@@ -1,5 +1,3 @@
-import { useEffect } from "react"
-
 type PagePickerProps = {
     datalength: number
     itemsperpage: number
@@ -11,10 +9,7 @@ export function PagePicker({currentpage, datalength, itemsperpage, changePage}: 
     const numberOfPages = Math.ceil(datalength/itemsperpage);
     const lastThreePageFormat = numberOfPages-3;
 
-    useEffect(()=>{
-        console.log(numberOfPages);
-    }, [numberOfPages]);
-
+    //Checks if the current page is within the range of three to determine if you'll show the three dots or not
     const rangeOfThree = (index: number) => {
         if(currentpage===1){
             if(index<currentpage+3){
@@ -72,7 +67,8 @@ export function PagePicker({currentpage, datalength, itemsperpage, changePage}: 
                             <div 
                                 key={(index+1)+lastThreePageFormat}
                                 style={{display:rangeOfThree(index+1)?'flex':'none'}}
-                                className={`${currentpage===index+1?'activepage':'inactivepage'} PagePickerPageDiv`} onClick={()=>{ changePage(index+1); }}>
+                                className={`${currentpage===index+1?'activepage':'inactivepage'} PagePickerPageDiv`} 
+                                onClick={()=>{ changePage(index+1); }}>
                                 {index+1}
                             </div>
                         );
@@ -92,7 +88,8 @@ export function PagePicker({currentpage, datalength, itemsperpage, changePage}: 
                     return(
                         <div
                             key={(index+1)+lastThreePageFormat}
-                            className={`${currentpage===(index+1)+lastThreePageFormat?'activepage':'inactivepage'} PagePickerPageDiv`} onClick={()=>{ changePage( (index+1)+lastThreePageFormat ); }}>
+                            className={`${currentpage===(index+1)+lastThreePageFormat?'activepage':'inactivepage'} PagePickerPageDiv`} 
+                            onClick={()=>{ changePage( (index+1)+lastThreePageFormat ); }}>
                             { (index+1)+lastThreePageFormat }
                         </div>
                     );

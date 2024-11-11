@@ -8,17 +8,17 @@ export const StarSystem = ({ numberOfStars }: Props) => {
     return (
         <span id="StarSystem">
             {
-                Array(numberOfStars).fill('').map(()=>{
+                Array(numberOfStars).fill('').map((_, index)=>{
                     return(
-                        <img alt="filledstar" src="/filledstar.png"/>
+                        <img key={"filledstar"+index} alt="filledstar" src="/filledstar.png"/>
                     );
                 })
             }
 
             {
-                Array(3-numberOfStars).fill('').map(()=>{
+                Array(3-numberOfStars).fill('').map((_, index)=>{
                     return(
-                        <img alt="filledstar" src="/unfilledstar.png"/>
+                        <img key={"unfilledstar"+index} alt="unfilledstar" src="/unfilledstar.png"/>
                     );
                 })
             }

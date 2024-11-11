@@ -33,3 +33,17 @@ export type DataType = {
       
     }
 }
+
+export type StatusTypes = 'Inactive'|'Active'|'Pending'|'Blacklisted';
+
+export type modalStates = 'search'|'account'|'sidebar'|null
+
+export type activeModalType = {
+	activeModal: modalStates;
+	updateActiveModal: (modal: modalStates)=>void
+}
+
+export type SignedUserType = {
+	email: string|null
+	updateEmail: (arg: string|null)=>void
+}

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { SignedUserContext } from '../App';
 import './../styles/Signin.scss';
 import { useContext, useRef, useState } from 'react';
 import { USERS } from '../utils/routes';
+import { SignedUserContext } from '../utils/contexts';
 
 export const Signin = () => {
 	const { updateEmail } = useContext(SignedUserContext);

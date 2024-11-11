@@ -80,9 +80,7 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
         const numOfWidth = Math.floor(scrollWidth/width); //Number of table viewable width that makes up scrollable width (as an integer)
         const UserPageWidth = document.getElementById('App')!.getBoundingClientRect().width;
         const leftPadding = (UserPageWidth - width)
-        console.log(remainder, right-leftPadding);
-
-        console.log()
+        
         //Checks to determine if modal would cut out probably because the selected record is too low (common among the last record)
         //It would then make the modal appear above the mouse click rather than below
         const y = bottom>e.clientY-top ? e.clientY-top : e.clientY-top-130;

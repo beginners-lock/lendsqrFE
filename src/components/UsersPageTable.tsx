@@ -109,6 +109,7 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
 
     const changeItemsPerPage = (el: HTMLSelectElement) => {
         setItemsperpage(parseInt(el.value));
+        console.log(parseInt(el.value));
     }
 
     const resetFilter = () => {
@@ -202,7 +203,7 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
                         filteredData.length>0?
                             filteredData.slice( startingindex() , lastindex() ).map((data, index)=>{
                                 return(
-                                    <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
+                                    <tr key={data.id} style={{borderBottom:index===itemsperpage-1?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
                                         <td>{data.fullname}</td>
                                         <td>{data.email}</td>
@@ -225,7 +226,7 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
                     :   data.length>0?
                             data.slice( startingindex() , lastindex() ).map((data, index)=>{
                                 return(
-                                    <tr key={data.id} style={{borderBottom:index===9?'none':'1px #213F7D1A solid'}}>
+                                    <tr key={data.id} style={{borderBottom:index===itemsperpage-1?'none':'1px #213F7D1A solid'}}>
                                         <td>{data.organization}</td>
                                         <td>{data.fullname}</td>
                                         <td>{data.email}</td>

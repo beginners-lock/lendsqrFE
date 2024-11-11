@@ -45,7 +45,7 @@ export function PagePicker({currentpage, datalength, itemsperpage, changePage}: 
             </div>
 
             <div 
-                style={{display:currentpage>2?'flex':'none'}}
+                style={{display:numberOfPages>6 && currentpage>2?'flex':'none'}}
                 className="PagePickerDots"
             >
                 ...
@@ -56,7 +56,6 @@ export function PagePicker({currentpage, datalength, itemsperpage, changePage}: 
                         return(
                             <div 
                                 key={(index+1)+lastThreePageFormat}
-                                style={{display:rangeOfThree(index+1)?'flex':'none'}}
                                 className={`${currentpage===index+1?'activepage':'inactivepage'} PagePickerPageDiv`} onClick={()=>{ changePage(index+1); }}>
                                 {index+1}
                             </div>

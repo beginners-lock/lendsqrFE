@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import './../styles/TopNavBar.scss';
-import { ActiveModalContext, SignedUserContext } from '../utils/contexts';
+import { ActiveModalContext } from '../utils/contexts';
 
 export const TopNavBar = () => {
     const { updateActiveModal } = useContext(ActiveModalContext);
-    const { email } = useContext(SignedUserContext);
 
     return (
         <nav id="TopNavBar">
@@ -28,7 +27,7 @@ export const TopNavBar = () => {
                 
                 <div id="TNBAccount"  onClick={()=>{ updateActiveModal('account'); }}>
                     <img alt="avatar" id="TNBAvatar" src="/avatar.png"/>
-                    <span>{ email && email.length>13 ? email.slice(0,10)+'...' : email }</span>
+                    <span>Adedeji</span>
                     <img alt="dropdown" id="TNBDropdown" src="/dropdown.png"/>
                 </div>
             </span>

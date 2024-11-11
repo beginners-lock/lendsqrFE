@@ -74,7 +74,7 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
     }
 
     const toggleOptions = (e: React.MouseEvent, index: number) => {
-        const { top, width, right } = document.getElementById('TableContainer')!.getBoundingClientRect();
+        const { top, width, right, bottom } = document.getElementById('TableContainer')!.getBoundingClientRect();
         const scrollWidth = document.getElementById('TableContainer')!.scrollWidth;
         const remainder = scrollWidth % Math.floor(width);
         const numOfWidth = Math.floor(scrollWidth/width); //Number of table viewable width that makes up scrollable width (as an integer)
@@ -82,15 +82,19 @@ export const UsersPageTable = ({ updateCardData }: Props) => {
         const leftPadding = (UserPageWidth - width)
         console.log(remainder, right-leftPadding);
 
+        console.log()
+        //Checks to determine if modal would cut out probably because the selected record is too low (common among the last record)
+        //It would then make the modal appear above the mouse click rather than below
+        const y = bottom>e.clientY-top ? e.clientY-top : e.clientY-top-130;
+
         if(remainder>1){
             const xCoor = ((numOfWidth-1)*width)+(right-leftPadding)-Math.abs((remainder)-(right-leftPadding));
             console.log(xCoor);
-            setCoords({ x: -xCoor+20, y: e.clientY-top});
+            setCoords({ x: -xCoor+20, y: y});
             setShowoptions(true);
-            //alert(scrollWidth+'|'+width);
         }else{
             const xCoor = width-(right-leftPadding);
-            setCoords({ x: xCoor-10, y: e.clientY-top});
+            setCoords({ x: xCoor-10, y: y});
             setShowoptions(true);
         }
 

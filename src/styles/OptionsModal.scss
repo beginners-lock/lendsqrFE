@@ -2,7 +2,7 @@
 
 #OptionsModal{
     @include App.flexcolstart; padding:10px 20px; display:none;
-    position:absolute; background-color:white;
+    position:absolute; background-color:white; z-index:20px;
     width:180px; height:130px; border-radius:4px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     box-sizing:border-box; /*right:16px;*/

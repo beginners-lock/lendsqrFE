@@ -1,3 +1,36 @@
+# Lendsqr Frontend Engineer Assessment
+
+Link to Live Preview
+[Live Preview of Submission (Chukwu Rophi)](https://rophi-chukwu-lendsqr-fe-test.netlify.app/)
+
+## Project Description
+
+Using React and Sass to replicate a [Figma Design](https://www.figma.com/design/ZKILoCoIoy1IESdBpq3GNC/Lendsqr-Frontend-Engineering-Assessment?node-id=5530-0&node-type=canvas&t=qSXbJG0rT5GTTXwM-0) as part of the requirements of a frontend engineering assessment by Lendsqr.
+
+## How to install Install and Run the Project
+
+- First of all ensure that you have [nodejs](https://nodejs.org/en) installed on your system. You can check this by running `node -v` on your terminal or command prompt. If you don't get any errors you're fine.
+- Now pull this project to any folder of your choice using the necessary git commands and run `npm install` to install all the necessary dependencies.
+- When that is done run `npm run dev`.
+
+## File Structure
+
+From the project root we have two folders `public` and `/src`.
+
+- The `/public` folder contains all images used and has a '/json' folder which contains the json file with the 500 mock user records used for this project.
+- The '/src' folder, further contains 5 folders:
+  - The '/utils' folder contains:
+    - `contexts.ts` - This file contains and exports all the React Contexts used in this project.
+    - `types.ts` - This file contains all the variable (Typescript) type descriptions used in this project.
+    - `routes.ts` - This file contains all the routes in the project.
+    - `functions.ts` - This file contains all global functions used within the project so that it may be accessed by any component.
+  - The `/styles` folder contains all the Sass files for the various pages and components in the project.
+  - The `/fonts` folder contains all the external fonts used in this project.
+  - The `/pages` folder contains all the pages in this project which are 4 in number: `Signin`, `Users`, `UserDetails`, `Dashboard`
+  - The `/components` folder contains all the reusable components in the project
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

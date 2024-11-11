@@ -99,53 +99,22 @@ The project contains only two contexts:
 
 ## Methods for Storage and Persistence
 
-# React + TypeScript + Vite
+As earlier mentioned the details of the authenticated user is stored with `localStorage` and this is also applied to the storing of specific user whose details we are viewing in `UserDetails` page. This helps to maintain persistence even with page reloads. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Due to the assessment being for frontend, I tried as much as possible to not use any backend related technology so therefore there wouldn't be any need to `asynchronous awaits` for pending data. Also the use of pagination would help reduce the burden of rendering large lists at once, hence there was no need for 'spinners' or 'loading' components.
 
-Currently, two official plugins are available:
+The data gotten from the JSON Generator API is stored in the `/public/json/generated.json` file and is called on `Users` page load. All changes done to the data like activating and blacklisting users is not persistent on page reload because it is not editing the json file instead it is editing the data state. Writing to files is not  a client side enabled feature and hence I believe applying that feature for persistence would have been beyond the scope of this assessment. There was the option of using the localStorage to make it persistent, but I believe storing 500 records of data on `localStorage` is a bit of bad programming practice.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Signin Page
+  To sign in you simply need to put any email (there is no need for a password in this submission) but if you try to sign in without an email input in the email field you will get an error.
+  If you have not been authenticated (have not signed in) you will not be able to visit the `https://hostname/dashboad/users` and `https://hostname/dashboad/userdetails` routes.
 
-## Expanding the ESLint configuration
+- Top Navigation Bar and Side Navigation Bar
+  This component shows all the nav options when viewed on the laptop or wider screens but on mobile screens or smaller screens, you would see some certain differences. The 'search input', 'docs' and
+  'notification' would no longer be visible as there would be some trouble getting them to fit. You would also see some new icons such as a menu burger icon on the far left and a search icon to the left     of the avatar. Clicking the avatar icon would slide in a nav bar from the right containing the nav options that were not visible and clicking the menu burger icon would slide in the Side Navigation Bar.
+  The Side Navigation Bar is interactable on click but does not redirect or change url.
+  
+- Users Page and User Details Page
+  This page contains the users table records which draws its data from the json mock data. The cards in the page also draw data from the json mock as you would notice when certain features change they       would update as well. Clicking the filter icon on the table header brings out the `Filter Modal` which can currently only filter by status. Clicking the three dotted icon at the end of each row would      bring out the the `Options Modal` which can be used to 'Activate' or 'Blacklist' the user when click. Additionally you can view more details about the selected user by clicking the 'View Details' on the   `Options Modal`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```

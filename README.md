@@ -89,6 +89,16 @@ The [JSON Generator](https://json-generator.com/) api was used to generate the 5
 This library is what provides the count up animation for the numbers on the cards in the `Users` page. For more information on this library, you can check out the [documentation](https://www.npmjs.com/package/react-countup)
 
 
+## Contexts
+
+The project contains only two contexts:
+
+- `SigninUserContext` - This context is used to store the signin in user after authentication and is very important in determining if a user is authorized to view certain pages (`Dahsboard`, `Users` and `UserDetails`). Due to the lack of persistent of the React contexts on reload, the signed in user details is additionally stored with [localStorage](https://www.w3schools.com/jsref/prop_win_localstorage.asp)
+- `ActiveModalContext` - This is the context that determines which modal is visible or not. It is very important context for the 'result filter' and 'more options' modals used in the `Users` page table and also for the 'SideNav' and the 'SearchBar' modals that become active on small screens.
+
+
+## Methods for Storage and Persistence
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
